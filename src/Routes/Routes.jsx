@@ -1,10 +1,44 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
 import Main from '../layouts/Main';
 import Home from '../Pages/Home/Home';
+import ChefRecipes from '../Pages/ChefRecipes/ChefRecipes';
+import RecipesLayout from '../layouts/RecipesLayout/RecipesLayout';
+import Category from '../Pages/Shared/Category/Category';
+import LoginLayOut from '../layouts/LoginLayOut/LoginLayOut'
+import Login from "../Login/Login/Login";
+import Register from "../Login/Register/Register";
+
+import Terms from "../Pages/Shared/Terms/Terms";
+import PrivateRoute from './PrivateRoute';
 
 
 const router = createBrowserRouter([
+    {
+        path:'/',
+        element:<LoginLayOut></LoginLayOut>,
+        children:[
+            {
+                path:'/',
+                element:<Navigate to ='/'></Navigate>
+            },
+            {
+                path:'/login',
+                element:<Login></Login>
+            },
+            {
+                path:'/register',
+                element:<Register></Register>
+            },
+            {
+                path:'/terms',
+                element:<Terms></Terms>
+            }
+        ]
+        
+
+    },
+    
     {
         path:'/',
         element:<Main></Main>,
@@ -12,8 +46,25 @@ const router = createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>
+            },
+            {
+                path:'/category',
+                element:<Category></Category>,
+                // loader:({params}) =>fetch(`http://localhost:5000/chefData/${params.id}`)
             }
         ]
+    },
+    {
+        path:'/chefData',
+        element:<PrivateRoute><RecipesLayout></RecipesLayout></PrivateRoute>,
+        children:[
+            {
+                path:':id',
+                element:<ChefRecipes></ChefRecipes>,
+                loader:({params})=> fetch(`http://localhost:5000/chefData/${params?.id}`)
+            }
+        ]
+
     }
 ])
 export default router;

@@ -11,6 +11,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [chefData, setChefData] = useState([]);
@@ -90,7 +91,7 @@ const Home = () => {
           <div className='row'>   
             {
             chefData?.map(cd => 
-            <div className='col-sm-12 col-md-4 col-lg-4 py-4' key={cd.id}><Card>
+            <div className='col-sm-12 col-md-4 col-lg-4 py-4' key={cd.id} cd ={cd}><Card>
                 <Card.Img variant="top" className='card_img' src={cd.chef_picture} />
                 <Card.Body>
                   <Card.Title>{cd?.chef_name}</Card.Title>
@@ -99,7 +100,7 @@ const Home = () => {
                     <p className='text-secondary'>Number of recipes: {cd.number_of_recipes}</p>
                     <p className='text-secondary'>Likes: {cd.likes}</p>
                   </Card.Text>
-                  <Button className='btn-secondary' variant="secondary">View Recipes</Button>
+                  <Link to ='/chefData/:id'><Button className='btn-secondary' variant="secondary">View Recipes</Button></Link>
                 </Card.Body>
               </Card>
             </div>)
