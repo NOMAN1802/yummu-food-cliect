@@ -1,25 +1,41 @@
-import React from 'react';
-import { Button, Card } from 'react-bootstrap';
-import { useLoaderData, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import {  Card } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
+import './ChefRecipes.css'
 
 
 const ChefRecipes = () => {
-    const {id} = useParams()
-   const chefData = useLoaderData();
-    const {chef_picture,chef_name,years_of_experience,number_of_recipes,bio} = chefData;
-    console.log(chefData);
-    return (
-        <Card>
-        {/* <Card.Img variant="top" src={}/> */}
-        <Card.Body>
-          <Card.Title>{chef_name}</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
-        </Card.Body>
-      </Card>  
+  const { id } = useParams();
+  const [details, setDetails] = useState({});
+  
+  useEffect(() => {
+    fetch(`http://localhost:5000/chefData/${id}`)
+      .then((res) => res.json())
+      .then((data) => setDetails(data));
+  }, [id]);
+  console.log(details)
+
+    return (     
+       <div>
+          <div className='d-flex gap-5'>
+          <Card className='w-50' style={{marginTop: '50px', marginBottom: "50px"}}>
+            
+            <Card.Img  variant="top" src={details.chef_picture}/>
+            <Card.ImgOverlay><Card.Title className='title'>{details.chef_name}</Card.Title></Card.ImgOverlay>
+          </Card> 
+          <div className='w-50' style={{marginTop: '50px', marginBottom: "50px"}}>
+            <h4 className='text-secondary fw-bolder'>Name:</h4>
+            <p><small className='text-danger-emphasis'>{details.chef_name}</small></p>      
+            <h4 className='text-secondary fw-bolder'>Biography:</h4>
+            <p><small className='text-danger-emphasis'>{details.bio}</small></p>
+            <h4 className='text-secondary fw-bolder'>Experience:</h4>
+            <p><small className='text-danger-emphasis'>{details.years_of_experience} years</small></p>
+            <h4 className='text-secondary fw-bolder'>Number of recipes:</h4>
+            <p><small className='text-danger-emphasis'>{details.number_of_recipes}</small></p>
+         </div> 
+          </div>
+
+       </div>
     );
 };
 

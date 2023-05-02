@@ -28,7 +28,11 @@ const Home = () => {
       });
 
   }, [])
-  console.log(chefData);
+  
+  // console.log(chefData);
+  const handleDetails = (id)=>{
+    console.log('Clicked chef id:', id);
+  }
   return (
    <div className='container'>
      <section>
@@ -88,24 +92,31 @@ const Home = () => {
       <div>
         <h3 className='fw-bolder text-center'>Top <span className='text-secondary'>American</span> <span className='text-primary'>Chefs</span></h3>
         <div className='container'>
-          <div className='row'>   
-            {
-            chefData?.map(cd => 
-            <div className='col-sm-12 col-md-4 col-lg-4 py-4' key={cd.id} cd ={cd}><Card>
-                <Card.Img variant="top" className='card_img' src={cd.chef_picture} />
-                <Card.Body>
-                  <Card.Title>{cd?.chef_name}</Card.Title>
-                  <Card.Text>
-                    <p className='text-secondary'>Experience: {cd.years_of_experience} Years</p>
-                    <p className='text-secondary'>Number of recipes: {cd.number_of_recipes}</p>
-                    <p className='text-secondary'>Likes: {cd.likes}</p>
-                  </Card.Text>
-                  <Link to ='/chefData/:id'><Button className='btn-secondary' variant="secondary">View Recipes</Button></Link>
-                </Card.Body>
-              </Card>
-            </div>)
-          }
-          </div>
+        <div className='row'>
+  {chefData?.map(cd => { console.log(cd.id)
+    return (
+      <div className='col-sm-12 col-md-4 col-lg-4 py-4' key={cd.id} >
+        <Card>
+          <Card.Img variant="top" className='card_img' src={cd.chef_picture} />
+          <Card.Body>
+            <Card.Title>{cd?.chef_name}</Card.Title>
+            <Card.Text>
+              <p className='text-secondary'>Experience: {cd.years_of_experience} Years</p>
+              <p className='text-secondary'>Number of recipes: {cd.number_of_recipes}</p>
+              <p className='text-secondary'>Likes: {cd.likes}</p>
+            </Card.Text>
+            <Link to={`/chefData/${cd.id}`}>
+              <Button onClick={() => handleDetails(cd.id)} className='btn-secondary' variant="secondary">
+                View Recipes
+              </Button>
+            </Link>
+          </Card.Body>
+        </Card>
+      </div>
+    );
+  })}
+</div>
+
         
          
          

@@ -3,6 +3,7 @@ import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import logo from '../../../assets/logo.png'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
+import { FaUserCircle } from 'react-icons/fa';
 
 
 
@@ -42,7 +43,7 @@ const Header = () => {
          
             
           <Nav>
-            {user && <FaUserCircle style={{fontSize: '2rem'}}></FaUserCircle>}
+            {user && <div className='icon_container'> <FaUserCircle style={{fontSize: '2rem'}}></FaUserCircle> <p className='icon_person'>{user.displayName}</p> </div>}
             
             { user?
               <Button onClick={handleLogOut} variant="secondary">Logout</Button>:

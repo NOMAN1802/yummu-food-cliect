@@ -9,7 +9,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     console.log('login page location', location)
-    const from = location.state?.from?.pathname || './'
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogin = event => {
         event.preventDefault();
@@ -30,7 +30,7 @@ const Login = () => {
     }
 
     return (
-        <Container className='w-25 mx-auto'>
+        <Container className='w-25 mx-auto' style={{marginBottom: '150px',marginTop: '150px'}}>
             <h3>Please Login</h3>
             <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
