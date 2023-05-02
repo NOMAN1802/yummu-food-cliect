@@ -12,6 +12,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Marquee from 'react-fast-marquee';
+import FoodZone from '../Shared/FoodZone/FoodZone';
 
 const Home = () => {
   const [chefData, setChefData] = useState([]);
@@ -28,7 +30,7 @@ const Home = () => {
       });
 
   }, [])
-  
+
   // console.log(chefData);
   const handleDetails = (id)=>{
     console.log('Clicked chef id:', id);
@@ -39,9 +41,13 @@ const Home = () => {
       <div className='row mt-6'>
 
         <div className='col-12 col-md-4 col-lg-4'>
-          <h3 className='text-gray' style={{ margin: '40px' }}>I’m Jenn Segal</h3>
-          <p className='text-gray' style={{ margin: '40px' }}>Once upon a time, I was a chef – tall hat, white coat, checked pants, the works!  I left the restaurant business in 2003 when my first child was born. Now, I’m cooking for my family and sharing all my tested and perfected recipes with you here. The recipes on this site reflect what my life is about; as a mom, I need easy meals the whole family will enjoy but the chef in me needs to eat too!</p>
+          <h3 className='text-secondary text-bolder' style={{ margin: '40px' }}>🌟 Delightful Bites - <span className='text-primary'> Where Taste Takes Center Stage!</span> 🌟</h3>
+          <p className='text-gray' style={{ margin: '40px' }}>Visit us today at our restaurant and immerse yourself in a world of culinary delight. Our talented chefs and friendly staff are ready to create an unforgettable experience for you and your loved ones. Reserve your table now and prepare to be amazed!</p>
           <button className='btn btn-warning' style={{ margin: '40px' }}>Are You Hungry!!!</button>
+          <Marquee speed={100}>
+          🍰 Divine Desserts:
+Finish your journey with our divine desserts that will satisfy even the most discerning sweet tooth. From luscious chocolate indulgence to light and fruity creations, our desserts are masterpieces designed to provide the perfect sweet ending to your meal.
+                </Marquee>
         </div>
         <div className='col-12 col-md-4 col-lg-8'>
           <Swiper
@@ -86,6 +92,10 @@ const Home = () => {
             <SwiperSlide><img src="https://img.freepik.com/free-photo/male-cook-standing-kitchen-presenting-delicious-dish_23-2147863798.jpg?size=626&ext=jpg&ga=GA1.1.1735352543.1673870524&semt=sph" style={{ height: '350px' }} alt="" /></SwiperSlide>
             ...
           </Swiper>
+        </div>
+        <div className='my-5'>
+          <h3 className='text-center fw-bolder text-secondary'>Delicious Food</h3>
+          <FoodZone></FoodZone>
         </div>
       </div>
 
