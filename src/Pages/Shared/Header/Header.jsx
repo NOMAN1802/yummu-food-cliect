@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import logo from '../../../assets/logo.png'
 import { Link } from 'react-router-dom';
@@ -9,6 +9,7 @@ import { FaUserCircle } from 'react-icons/fa';
 
 const Header = () => {
 
+  const [showEmail, setShowEmail] = useState(false);
   const {user, logOut} = useContext(AuthContext)
 
   const handleLogOut =()=>{
@@ -18,6 +19,13 @@ const Header = () => {
       console.log(error);
     })
   }
+  const handleMouseEnter = () => {
+    setShowEmail(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowEmail(false);
+  };
     return (
         <div>
             <Navbar className='container' collapseOnSelect expand="lg" bg="light" variant="light">
@@ -43,7 +51,7 @@ const Header = () => {
          
             
           <Nav>
-            {user && <div className='icon_container'> <FaUserCircle style={{fontSize: '2rem'}}></FaUserCircle> <p className='icon_person'>{user.displayName}</p> </div>}
+           
             
             { user?
               <Button onClick={handleLogOut} variant="secondary">Logout</Button>:

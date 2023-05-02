@@ -1,0 +1,16 @@
+ .icon_person  {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .icon_person:hover .icon_container {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .icon_container{
+    position: absolute;
+    visibility: hidden;
+    
+  }
+  
