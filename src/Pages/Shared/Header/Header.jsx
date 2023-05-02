@@ -51,7 +51,8 @@ const Header = () => {
          
             
           <Nav>
-           
+            {user && <div className='icon_person'onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}> <div className='d-flex'><FaUserCircle style={{fontSize: '2rem ', marginRight: '20px'}}></FaUserCircle>{showEmail && <p className='icon_person'>{user.email}</p>}</div>
+            </div>}
             
             { user?
               <Button onClick={handleLogOut} variant="secondary">Logout</Button>:
