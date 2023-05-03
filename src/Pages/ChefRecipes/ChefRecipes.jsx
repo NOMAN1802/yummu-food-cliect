@@ -12,7 +12,7 @@ const ChefRecipes = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   
   useEffect(() => {
-    fetch(`http://localhost:5000/chefData/${id}`)
+    fetch(`https://yummy-food-server.vercel.app/chefData/${id}`)
       .then((res) => res.json())
       .then((data) => setDetails(data));
   }, [id]);

@@ -18,7 +18,7 @@ import FoodZone from '../Shared/FoodZone/FoodZone';
 const Home = () => {
   const [chefData, setChefData] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/chefData')
+    fetch('https://yummy-food-server.vercel.app/chefData')
       .then(response => response.json())
       .then(data => {
         // Process the fetched data here

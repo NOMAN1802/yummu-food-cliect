@@ -16,57 +16,57 @@ import ErrorPage from '../Pages/Shared/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
     {
-        path:'/',
-        element:<LoginLayOut></LoginLayOut>,
-        errorElement:<ErrorPage></ErrorPage>,
-        children:[
+        path: '/',
+        element: <LoginLayOut></LoginLayOut>,
+        errorElement: <ErrorPage></ErrorPage>,
+        children: [
             {
-                path:'/',
-                element:<Home></Home>
+                path: '/',
+                element: <Home></Home>
             },
             {
-                path:'/login',
-                element:<Login></Login>
+                path: '/login',
+                element: <Login></Login>
             },
             {
-                path:'/register',
-                element:<Register></Register>
+                path: '/register',
+                element: <Register></Register>
             },
             {
-                path:'/terms',
-                element:<Terms></Terms>
+                path: '/terms',
+                element: <Terms></Terms>
             }
         ]
-        
+
 
     },
-    
+
     {
-        path:'/',
-        element:<Main></Main>,
-        
-        children:[
+        path: '/',
+        element: <Main></Main>,
+
+        children: [
             {
-                path:'/',
-                element:<Home></Home>
+                path: '/',
+                element: <Home></Home>
             },
             {
-                path:'/category',
-                element:<Category></Category>,
-                // loader:({params}) =>fetch(`http://localhost:5000/chefData/${params.id}`)
+                path: '/category',
+                element: <Category></Category>,
+                // loader:({params}) =>fetch(`https://yummy-food-server.vercel.app/chefData/${params.id}`)
             }
         ]
     },
     {
-        path:'/chefData',
-        element:<RecipesLayout></RecipesLayout>,
-        children:[
+        path: '/chefData',
+        element: <RecipesLayout></RecipesLayout>,
+        children: [
             {
-                path:':id',
-                element:<PrivateRoute>
+                path: ':id',
+                element: <PrivateRoute>
                     <ChefRecipes></ChefRecipes>
                 </PrivateRoute>,
-                loader:({params})=> fetch(`http://localhost:5000/chefData/${params.id}`)
+                loader: ({ params }) => fetch(`https://yummy-food-server.vercel.app/chefData/${params.id}`)
             }
         ]
 
