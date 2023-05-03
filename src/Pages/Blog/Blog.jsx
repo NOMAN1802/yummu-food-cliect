@@ -15,8 +15,8 @@ const Blog = () => {
             <div className='container'>
              <div className='row'>
                 
-                <div className='col-6 gap-2 my-4'>
-               <Card className='w-100 h-100 col-6'>
+                <div className='col-sm-12 col-lg-6 gap-2 my-4'>
+               <Card className='w-100 h-100 shadow-lg p-3 mb-5 bg-white rounded'>
                     <Card.Title>
                         <p className='text-muted text-center'> Q1.Differences between uncontrolled and controlled components</p>
                     </Card.Title>
@@ -43,8 +43,8 @@ const Blog = () => {
                     </Card.Text>
                 </Card>
                </div>
-               <div className='col-6 gap-2 my-4'>
-               <Card className='w-100 h-100'>
+               <div className='col-sm-12 col-lg-6 gap-2 my-4'>
+               <Card className='w-100 h-100 shadow-lg p-3 mb-5 bg-white rounded'>
                     <Card.Title>
                         <p className='text-muted text-center'>Q2.How to validate React props using PropTypes</p>
                     </Card.Title>
@@ -65,8 +65,8 @@ const Blog = () => {
                     </Card.Text>
                 </Card>
                </div>
-               <div className='col-6 gap-2 my-4'>
-               <Card className='w-100 h-100'>
+               <div className='col-sm-12 col-lg-6 gap-2 my-4'>
+               <Card className='w-100 h-100 shadow-lg p-3 mb-5 bg-white rounded'>
                     <Card.Title>
                         <p className='text-muted text-center'>Q3.Difference between nodejs and express.js</p>
                     </Card.Title>
@@ -81,8 +81,8 @@ const Blog = () => {
                     </Card.Text>
                 </Card>
                </div>
-               <div className='col-6 gap-2 my-4'>
-               <Card className='w-100 h-100'>
+               <div className='col-sm-12 col-lg-6 gap-2 my-4'>
+               <Card className='w-100 h-100 shadow-lg p-3 mb-5 bg-white rounded'>
                     <Card.Title>
                         <p className='text-muted text-center'>Q4.What is a custom hook, and why will you create a custom hook?</p>
                     </Card.Title>

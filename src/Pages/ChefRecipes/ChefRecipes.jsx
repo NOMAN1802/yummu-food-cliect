@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import './ChefRecipes.css'
 import Rating from 'react-rating';
 import { FaRegStar, FaStar } from 'react-icons/fa';
+import LazyLoad from 'react-lazy-load';
 
 
 const ChefRecipes = () => {
@@ -29,10 +30,10 @@ const ChefRecipes = () => {
 
     return (     
        <div>
-          <div className='d-flex gap-5'>
+          <div className='d-lg-flex gap-5'>
           <Card className='w-50' style={{marginTop: '50px', marginBottom: "50px"}}>
             
-            <Card.Img  variant="top" src={details.chef_picture}/>
+            <LazyLoad height={500} width={460} threshold={0.95} onContentVisible={() => {console.log('loaded!')}}><Card.Img  variant="top" src={details.chef_picture}/></LazyLoad>
             <Card.Title className='title'>{details.chef_name}</Card.Title>
           </Card> 
           <div className='w-50' style={{marginTop: '50px', marginBottom: "50px"}}>
@@ -46,7 +47,7 @@ const ChefRecipes = () => {
             <p><small className='text-danger-emphasis'>{details.number_of_recipes}</small></p>
          </div> 
           </div>
-          <div className='my-5 d-flex gap-4'>
+          <div className='my-5 d-lg-flex gap-4'>
              
           <Card className='shadow-lg p-3 mb-5 bg-white rounded'>
 
