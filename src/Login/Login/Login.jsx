@@ -2,6 +2,9 @@ import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { GoogleAuthProvider, getAuth, signInWithPopup, signOut } from 'firebase/auth';
+import app from '../../firebase/firebase.config';
 
 
 const Login = () => {
@@ -13,7 +16,9 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
     const [error, setError] = useState('');
-    const [success, setSuccess] = useState('')
+    const [success, setSuccess] = useState('');
+    const[user,setUser] = useState(null);
+    const auth = getAuth(app);
 
     const handleLogin = event => {
         event.preventDefault();
@@ -54,9 +59,33 @@ const Login = () => {
                 setError('Email password does not matched');
             })
     }
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleSignIn =() =>{
+        signInWithPopup(auth, googleProvider)
+        .then(result => {
+            const LoggedInUser = result.user;
+            console.log(LoggedInUser);
+            setUser(LoggedInUser)
+            
+        })
+        .catch(error =>{
+            console.log('error',error.message);
+        })
+    }
+
+    const handleSingOut = () =>{
+        signOut(auth)
+        .then(result =>{
+            console.log(result);
+            setUser(null);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
 
     return (
-        <Container className='w-25 mx-auto' style={{marginBottom: '150px',marginTop: '150px'}}>
+        <Container className='w-25 mx-auto' style={{marginBottom: '100px',marginTop: '100px'}}>
             <h3 className='fw-bold'>Please <span className='text-primary'>Login</span></h3>
             <Form onSubmit={handleLogin}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -83,7 +112,14 @@ const Login = () => {
                 <p>{error}</p>
                 </Form.Text>
             </Form>
+            <div>
+                <h4 className='text-muted fw-bolder' style={{marginLeft: '25px'}}>Or</h4>
+                <Button onClick={handleGoogleSignIn} className='mb-2' variant="outline-primary"><FaGoogle></FaGoogle> Login with Google</Button>
+                <br />
+                <Button variant="outline-secondary"><FaGithub></FaGithub> Login with Github</Button>
+            </div>
         </Container>
+        
     );
 };
 
