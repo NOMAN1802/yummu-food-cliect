@@ -12,6 +12,7 @@ import Register from "../Login/Register/Register";
 import Terms from "../Pages/Shared/Terms/Terms";
 import PrivateRoute from './PrivateRoute';
 import ErrorPage from '../Pages/Shared/ErrorPage/ErrorPage';
+import Blog from '../Pages/Blog/Blog';
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path:'/blog',
+                element:<Blog></Blog>
             },
             {
                 path: '/login',

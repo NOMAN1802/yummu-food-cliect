@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import logo from '../../../assets/logo.png'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
 
@@ -39,14 +39,14 @@ const Header = () => {
          
             
             
-            <Link  to="/" style={{ textDecoration:'none', marginRight: '10px',color:'gray',marginLeft: '20px'}}>Home</Link>
+            <NavLink  to="/"  style={{ textDecoration:'none', marginRight: '10px',color:'gray',marginLeft: '20px'}} end>Home</NavLink>
             
-            <Link to="/blog" style={{ textDecoration:'none', marginRight: '10px',color:'gray',marginLeft: '20px'}}>Blog</Link>
+            <NavLink to="/blog" style={{ textDecoration:'none', marginRight: '10px',color:'gray',marginLeft: '20px'}} end>Blog</NavLink>
             
 
-            <Link to ="/"style={{ textDecoration:'none', marginRight: '10px',color:'gray',marginLeft: '20px'}}>
+            <NavLink to ="/"style={{ textDecoration:'none', marginRight: '10px',color:'gray',marginLeft: '20px'}} end>
               Contact
-            </Link>
+            </NavLink>
           </Nav>
          
             
