@@ -115,7 +115,7 @@ const Login = () => {
             <div>
                 <h4 className='text-muted fw-bolder' style={{marginLeft: '25px'}}>Or</h4>
                <div>
-              {user?   <Button onClick={handleSingOut} className='mb-2' variant="outline-primary"><FaSignOutAlt> SignOut</FaSignOutAlt> </Button> :
+              {user? <Button onClick={handleSingOut} className='mb-2' variant="outline-primary"><FaSignOutAlt> SignOut</FaSignOutAlt> </Button> :
               <>
               <Button onClick={handleGoogleSignIn} className='mb-2' variant="outline-primary"><FaGoogle></FaGoogle> Login with Google</Button>
                 <br />

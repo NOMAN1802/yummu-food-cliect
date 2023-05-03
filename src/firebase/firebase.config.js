@@ -4,13 +4,14 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+ console.log('environment variable', import.meta.env.VITE_apiKey);
 const firebaseConfig = {
-  apiKey: "AIzaSyCpJjV3j1F-CBY3psgDoMBFGVVR20EGWVE",
-  authDomain: "yummy-food-398a0.firebaseapp.com",
-  projectId: "yummy-food-398a0",
-  storageBucket: "yummy-food-398a0.appspot.com",
-  messagingSenderId: "118441261475",
-  appId: "1:118441261475:web:be44dc57140b073fd8c216"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
