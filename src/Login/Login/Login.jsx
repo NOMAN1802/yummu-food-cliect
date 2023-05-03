@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { GoogleAuthProvider, getAuth, signInWithPopup, signOut } from 'firebase/auth';
+import { FaGithub, FaGoogle, FaSignOutAlt } from 'react-icons/fa';
+import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup, signOut } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 
 
@@ -30,20 +30,6 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
-
-        //  validation 
-        if (!/(?=.*[A-Z])/.test(password)) {
-            setError('Please add at least one upper case');
-            return;
-        }
-        else if(!/(?=.*[0-9].*[0-9])/.test(password)){
-            setError('Please add at least 2 numbers');
-            return;
-        }
-        else if(password.length < 6 ){
-            setError('Please add at least 6 character in your password');
-            return;
-        }
        
         signIn(email, password)
             .then(result => {
@@ -60,6 +46,7 @@ const Login = () => {
             })
     }
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
     const handleGoogleSignIn =() =>{
         signInWithPopup(auth, googleProvider)
         .then(result => {
@@ -71,7 +58,19 @@ const Login = () => {
         .catch(error =>{
             console.log('error',error.message);
         })
-    }
+    };
+    const handleGithubSignIn = () =>{
+        signInWithPopup(auth, githubProvider)
+        .then(result => {
+            const loggedInUser = result.user;
+            console.log(loggedInUser);
+            setUser(loggedInUser);
+        })
+        .catch(error =>{
+           console.log(error); 
+        })
+      }
+
 
     const handleSingOut = () =>{
         signOut(auth)
@@ -83,7 +82,8 @@ const Login = () => {
             console.log(error);
         })
     }
-
+    
+  
     return (
         <Container className='w-25 mx-auto' style={{marginBottom: '100px',marginTop: '100px'}}>
             <h3 className='fw-bold'>Please <span className='text-primary'>Login</span></h3>
@@ -114,9 +114,15 @@ const Login = () => {
             </Form>
             <div>
                 <h4 className='text-muted fw-bolder' style={{marginLeft: '25px'}}>Or</h4>
-                <Button onClick={handleGoogleSignIn} className='mb-2' variant="outline-primary"><FaGoogle></FaGoogle> Login with Google</Button>
+               <div>
+              {user?   <Button onClick={handleSingOut} className='mb-2' variant="outline-primary"><FaSignOutAlt> SignOut</FaSignOutAlt> </Button> :
+              <>
+              <Button onClick={handleGoogleSignIn} className='mb-2' variant="outline-primary"><FaGoogle></FaGoogle> Login with Google</Button>
                 <br />
-                <Button variant="outline-secondary"><FaGithub></FaGithub> Login with Github</Button>
+                <Button onClick={handleGithubSignIn} variant="outline-secondary"><FaGithub></FaGithub> Login with Github</Button>
+              </>
+              }
+               </div>
             </div>
         </Container>
         

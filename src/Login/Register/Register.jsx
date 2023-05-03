@@ -26,15 +26,8 @@ const Register = () => {
 
 
         //  validation 
-        if (!/(?=.*[A-Z])/.test(password)) {
-            setError('Please add at least one upper case');
-            return;
-        }
-        else if(!/(?=.*[0-9].*[0-9])/.test(password)){
-            setError('Please add at least 2 numbers');
-            return;
-        }
-        else if(password.length < 6 ){
+       
+         if(password.length < 6 ){
             setError('Please add at least 6 character in your password');
             return;
         }
