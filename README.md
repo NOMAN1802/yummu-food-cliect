@@ -7,4 +7,4 @@
 +There i also added a login & registration page to see the recipes of specific chef recipies.
 
 * Client sites live link: https://yummy-food-398a0.web.app
-*Server site live link:https://yummy-food-server.vercel.app/chefData
+* Server site live link:https://yummy-food-server.vercel.app/chefData
