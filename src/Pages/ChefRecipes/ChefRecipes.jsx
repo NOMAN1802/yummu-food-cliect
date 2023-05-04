@@ -34,7 +34,7 @@ const ChefRecipes = () => {
           <div className='d-lg-flex gap-5'>
           <Card className='w-50' style={{marginTop: '50px', marginBottom: "50px"}}>
             
-            <LazyLoad height={500} width={460} threshold={0.95} onContentVisible={() => {console.log('loaded!')}}><Card.Img className='img' variant="top" src={details.chef_picture}/></LazyLoad>
+            <LazyLoad height={500} width={460} threshold={0.50} onContentVisible={() => {console.log('loaded!')}}><Card.Img className='img' variant="top" src={details.chef_picture}/></LazyLoad>
             <Card.Title className='title'>{details.chef_name}</Card.Title>
           </Card> 
           <div className='w-50' style={{marginTop: '50px', marginBottom: "50px"}}>
