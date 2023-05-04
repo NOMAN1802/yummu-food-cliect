@@ -42,7 +42,7 @@ const Home = () => {
 
         <div className='col-12 col-md-4 col-lg-4'>
           <h3 className='text-secondary text-bolder' style={{ margin: '40px' }}>🌟 Delightful Bites - <span className='text-primary'> Where Taste Takes Center Stage!</span> 🌟</h3>
-          <p className='text-gray' style={{ margin: '40px' }}>Visit us today at our restaurant and immerse yourself in a world of culinary delight. Our talented chefs and friendly staff are ready to create an unforgettable experience for you and your loved ones. Reserve your table now and prepare to be amazed!</p>
+          <p className='text-gray' style={{ margin: '40px' }}>Visit us today at our restaurant and immerse yourself in a world of culinary delight. Our talented chefs and friendly staff are ready to create an unforgettable experience for you and your loved ones. Reserve your table now and prepare to be amazed!!</p>
           <button className='btn btn-warning' style={{ margin: '40px' }}>Are You Hungry!!!</button>
           <Marquee speed={100}>
           🍰 Divine Desserts:
