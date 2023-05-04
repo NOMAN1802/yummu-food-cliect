@@ -6,7 +6,6 @@ import { FaGithub, FaGoogle, FaSignOutAlt } from 'react-icons/fa';
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup, signOut } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 
-
 const Login = () => {
 
     const { signIn } = useContext(AuthContext);
@@ -101,6 +100,7 @@ const Login = () => {
                 <Button variant="primary" type="submit">
                     Login
                 </Button>
+                
                 <br />
                 <Form.Text className="text-secondary">
                     Don't Have an Account? <Link to="/register">Register</Link>

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import {  Card } from 'react-bootstrap';
+import {  Card, Toast } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import './ChefRecipes.css'
 import Rating from 'react-rating';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import LazyLoad from 'react-lazy-load';
+import { Toaster, toast } from 'react-hot-toast';
 
-
+const notify = () => toast.success('Successfully added to favorite.');
 const ChefRecipes = () => {
   const { id } = useParams();
   const [details, setDetails] = useState({});
@@ -33,7 +34,7 @@ const ChefRecipes = () => {
           <div className='d-lg-flex gap-5'>
           <Card className='w-50' style={{marginTop: '50px', marginBottom: "50px"}}>
             
-            <LazyLoad height={500} width={460} threshold={0.95} onContentVisible={() => {console.log('loaded!')}}><Card.Img  variant="top" src={details.chef_picture}/></LazyLoad>
+            <LazyLoad height={500} width={460} threshold={0.95} onContentVisible={() => {console.log('loaded!')}}><Card.Img className='img' variant="top" src={details.chef_picture}/></LazyLoad>
             <Card.Title className='title'>{details.chef_name}</Card.Title>
           </Card> 
           <div className='w-50' style={{marginTop: '50px', marginBottom: "50px"}}>
@@ -49,7 +50,7 @@ const ChefRecipes = () => {
           </div>
           <div className='my-5 d-lg-flex gap-4'>
              
-          <Card className='shadow-lg p-3 mb-5 bg-white rounded'>
+          <Card className='shadow-lg p-3 mb-5 bg-white rounded w-75'>
 
             <Card.Title>
             <h4 className='text-secondary fw-bolder text-center'>Recipes Details</h4>
@@ -66,7 +67,7 @@ const ChefRecipes = () => {
                 <p><small>{details.cooking_method}</small></p>
                 
             </Card.Text>
-            <Card.Footer className="text-muted d-flex">
+            <Card.Footer className="text-muted d-flex mt-5">
                 <div className='flex-grow-1'>
                     <Rating
                         placeholderRating={details.rating}
@@ -77,13 +78,13 @@ const ChefRecipes = () => {
                     />
                     <span className='ms-2 text-center'>{details.rating}</span>
                 </div>
-                <div>
+                <div onClick={notify}>
                     <button className=' btn btn-warning' onClick={handleClick} disabled={isButtonDisabled}>{isButtonDisabled ? 'Added ' : 'Favorite'}</button>
                     
                 </div>
             </Card.Footer>
           </Card>
-          <Card className='shadow-lg p-3 mb-5 bg-white rounded'>
+          <Card className='shadow-lg p-3 mb-5 bg-white rounded w-75'>
 
             <Card.Title>
             <h4 className='text-secondary fw-bolder text-center'>Recipes Details</h4>
@@ -100,7 +101,7 @@ const ChefRecipes = () => {
                 <p><small>{details.desserts_cooking_method}</small></p>
                 
             </Card.Text>
-            <Card.Footer className="text-muted d-flex">
+            <Card.Footer className="text-muted d-flex mt-5">
                 <div className='flex-grow-1'>
                     <Rating
                         placeholderRating={details.rating}
@@ -111,13 +112,13 @@ const ChefRecipes = () => {
                     />
                     <span className='ms-2 text-center'>{details.rating}</span>
                 </div>
-                <div>
+                <div onClick={notify}>
                     <button className=' btn btn-warning' onClick={handleClick} disabled={isButtonDisabled}>{isButtonDisabled ? 'Added ' : 'Favorite'}</button>
                     
                 </div>
             </Card.Footer>
           </Card>
-          <Card className='shadow-lg p-3 mb-5 bg-white rounded'>
+          <Card className='shadow-lg p-3 mb-5 bg-white rounded w-75'>
 
             <Card.Title>
             <h4 className='text-secondary fw-bolder text-center'>Recipes Details</h4>
@@ -145,8 +146,11 @@ const ChefRecipes = () => {
                     />
                     <span className='ms-2 text-center'>{details.rating}</span>
                 </div>
-                <div>
+                <div onClick={notify}>
                     <button className=' btn btn-warning' onClick={handleClick} disabled={isButtonDisabled}>{isButtonDisabled ? 'Added ' : 'Favorite'}</button>
+                    <Toaster>
+                    
+                    </Toaster>
                     
                 </div>
             </Card.Footer>

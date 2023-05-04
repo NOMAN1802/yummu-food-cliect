@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useState } from 'react';
 import './Register.css'
+import { signOut } from 'firebase/auth';
 
 const Register = () => {
 
@@ -39,6 +40,7 @@ const Register = () => {
                     setError('');
                     event.target.reset();
                     setSuccess('User has been created successfully');
+                    
                 })
                 .catch(error => {
                     console.error(error.message);

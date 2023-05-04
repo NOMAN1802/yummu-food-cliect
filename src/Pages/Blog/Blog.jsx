@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Card } from 'react-bootstrap';
 import Marquee from 'react-fast-marquee';
+import ReactToPdf from 'react-to-pdf'
+
+
 
 const Blog = () => {
+
+    const ref = React.createRef();
     return (
+        
         <div className='container my-5'>
             <div>
                <h1 className='fw-bolder text-muted text-center'> Blog section</h1>
-
+              
+            <div>
+             <ReactToPdf targetRef={ref} filename="div-blue.pdf">
+            {({toPdf}) => (
+            <button className='btn btn-warning' onClick={toPdf}>Generate pdf</button>
+            )}
+            </ReactToPdf>
+            
+            <div style={{width: 110, height: 50, background: '#F0FFFF'}} ref={ref}/>
+            </div>
                <Marquee speed={100}>
     Some basic questions answer about React....
                </Marquee>
@@ -21,7 +36,7 @@ const Blog = () => {
                         <p className='text-muted text-center'> Q1.Differences between uncontrolled and controlled components</p>
                     </Card.Title>
                     <Card.Text>
-                        <p className='ps-2'><small className='text-muted'>Uncontrolled Components: <br />
+                        <p className='ps-2' ref={ref}><small className='text-muted'>Uncontrolled Components: <br />
                         1.It can manage state without depending external state management system.
                         <br />
                         2.Directly interact with DOM. 
